@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText etUserName;
@@ -33,11 +34,19 @@ public class LoginActivity extends AppCompatActivity {
         String password = etPassword.getText().toString();
         Intent loginintent = new Intent(LoginActivity.this, MainActivity.class);
 
-        if (userName.equals("Admin")&&password.equals("Admin")){
+        if (userName.equals("Admin")&&password.equals("Admin")) {
             startActivity(loginintent);
 
-        }else if (userName.equals(null)||password.equals(null))
+        }else {
+            boolean logic =true;
+            String message = (logic) ? "ERROR" : "Message";
+            int length = (logic) ? Toast.LENGTH_SHORT : Toast.LENGTH_LONG;
 
-        LoginActivity.this.finish();
+            Toast toast = Toast.makeText(this, message, length);
+            toast.show();
+        }
+
+       // LoginActivity.this.finish();
     }
 }
+
